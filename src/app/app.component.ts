@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {filter} from 'rxjs/operators';
 
 export interface Post {
   title: string;
@@ -18,7 +19,12 @@ export class AppComponent {
   ];
 
   updatePost(post: Post) {
-    this.posts.unshift(post)
+    this.posts.unshift(post);
     console.log('Post', post);
+  }
+
+  removePost(id: number) {
+    console.log('Id', id);
+    this.posts = this.posts.filter(p => p.id !== id);
   }
 }
